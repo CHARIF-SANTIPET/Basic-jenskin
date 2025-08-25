@@ -78,7 +78,7 @@ pipeline {
                 timeout(time:2, unit: 'MINUTES') {
                     input message: "Approve deployment to ${params.DEPLOY_ENV}?"
                 }
-        
+                echo "Deploying the application to ${params.DEPLOY_ENV} environment..."
             }
 
         } 
