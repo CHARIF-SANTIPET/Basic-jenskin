@@ -75,7 +75,10 @@ pipeline {
                 expression { return params.RUN_DEPLOY }
             }
             steps {
-                echo "Deploying the application to ${params.DEPLOY_ENV} environment..."
+                timeout(time:2, unit: 'MINUTES') {
+                    input message: "Approve deployment to ${params.DEPLOY_ENV}?"
+                }
+        
             }
 
         } 
