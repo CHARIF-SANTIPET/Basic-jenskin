@@ -20,7 +20,8 @@ pipeline {
             steps {
                 echo 'Deploying the application...'
             }
-        }
+        } 
+        
     }
 
     post {
