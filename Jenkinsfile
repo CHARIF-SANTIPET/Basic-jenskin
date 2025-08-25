@@ -59,7 +59,6 @@ pipeline {
         stage('List File') {
             steps {
                 sh 'ls -l'
-                sh 'exit 1'
             }
         }
          stage('Approval') {
