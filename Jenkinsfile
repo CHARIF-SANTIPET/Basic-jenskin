@@ -17,6 +17,9 @@ pipeline {
         stage('Test in Parallel') {
             parallel {
                 stage('Unit Tests') {
+                    when {
+                        expression { currentBuild.currentResult == 'SUCCESS' }
+                    }
                     steps {
                         echo 'Running unit tests...'
                         sh 'sleep 5'
@@ -26,6 +29,21 @@ pipeline {
                     steps {
                         echo 'Running integration tests...'
                         sh 'sleep 5'
+                    }
+                }
+            }
+        }
+
+        stage('simulate testing') {
+            parallel {
+                stage('Window') {
+                    steps {
+                        echo 'Running on Window'
+                    }
+                }
+                stage('Linux') {
+                    steps {
+                        echo 'Running on Linux'
                     }
                 }
             }
