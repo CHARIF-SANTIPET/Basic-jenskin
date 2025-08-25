@@ -32,9 +32,13 @@ pipeline {
             }
         }
         stage('Deploy') {
-            steps {
-                echo 'Deploying the application...'
+            when {
+                expression { return params.RUN_DEPLOY }
             }
+            steps {
+                echo 'Deploying application...'
+            }
+
         } 
 
     }
